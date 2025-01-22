@@ -103,10 +103,8 @@ function checkPriceChange($urls, $db, $chatIds)
     }
 }
 
-// try {
-//     checkPriceChange($urls, $db, $chatIds);
-// } catch (\Throwable $th) {
-//     sendErrors($th->getMessage(), $chatIds[0]);
-// }
-
-$response = $db->query("SELECT * FROM goods");
+try {
+    checkPriceChange($urls, $db, $chatIds);
+} catch (\Throwable $th) {
+    sendErrors($th->getMessage(), $chatIds[0]);
+}
