@@ -5,7 +5,7 @@ require_once 'vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/..');
 $dotenv->load();
 
-$db = new SQLite3("db.sqlite");
+$db = new SQLite3(__DIR__ . "/db.sqlite");
 $db->query("CREATE TABLE IF NOT EXISTS goods 
          (id INTEGER PRIMARY KEY, name TEXT NOT NULL, price INT NOT NULL,
           created_at DATETIME DEFAULT CURRENT_TIMESTAMP)");
