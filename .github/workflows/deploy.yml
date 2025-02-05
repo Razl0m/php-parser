@@ -16,7 +16,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
       - name: change directory
-        run: cd /home/user/php-parser
+        run: cd "/home/user/php-parser"
       - name: pull the changes
         run: git pull
       - name: composer install
