@@ -17,5 +17,4 @@ jobs:
           script: |
             cd /home/user/php-parser
             git pull
-            composer install
-
+            composer install --no-interaction --prefer-dist --optimize-autoloader
