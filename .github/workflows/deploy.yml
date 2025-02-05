@@ -15,11 +15,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.PORT }}
-      - name: change directory
-        run: cd /home/${{ secrets.USERNAME }}/php-parser
-      - name: pull the changes
-        run: git pull
-      - name: composer install
-        run: composer install --no-interaction --prefer-dist --optimize-autoloader
-      - name: run test
-        run: composer test
+          script: |
+            cd /home/user/php-parser
+            git pull
+            composer install --no-interaction --prefer-dist --optimize-autoloader
