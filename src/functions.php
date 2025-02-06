@@ -11,7 +11,7 @@ function parseSites($URLS, $patternName, $patternPrice): array
          throw new \Exception("Error opening URL", 1);
          continue;
       }
-      
+
       if (preg_match($patternName, $html, $matches)) {
          $name = $matches[1];
       } else {
@@ -66,10 +66,8 @@ function checkPriceChange($goods, $db): string
       $oldPrice = $db->querySingle("SELECT price FROM goods WHERE name = '$name' ORDER BY id DESC LIMIT 1");
       $db->query("INSERT INTO goods (name, price) VALUES('{$name}', '{$price}')");
       if ($oldPrice == NULL) {
-         throw new \Exception("Товар $name не найден в базе данных");
-         continue;
-      }
-      if ($oldPrice != $price) {
+         $message .= "Товар $name не найден в базе данных\n";
+      } elseif ($oldPrice != $price) {
          $message .= "Цена на товар $name изменилась c $oldPrice на $price\n";
       }
    }

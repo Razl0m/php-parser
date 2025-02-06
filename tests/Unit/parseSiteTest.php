@@ -140,7 +140,11 @@ it('can handle an error when checking price change', function () {
         "Product2" => 3000,
     ];
 
-    \Functions\checkPriceChange($goods, $db);
+    
+    $expect = "Цена на товар Product1 изменилась c 1000 на 2000\nТовар Product2 не найден в базе данных\n";
+    $response = \Functions\checkPriceChange($goods, $db);
+
+    expect($response)->toEqual($expect);
 
     $db->close();
-})->throws(\Exception::class, 'Товар Product2 не найден в базе данных');
+});
